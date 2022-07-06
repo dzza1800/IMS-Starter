@@ -44,7 +44,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "id:" + id + " first name:" + ItemName;
+		return "id:" + id + " Item Name:" + ItemName;
 	}
 
 	@Override
@@ -53,6 +53,7 @@ public class Item {
 		int result = 1;
 		result = prime * result + ((ItemName == null) ? 0 : ItemName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((ItemPrice == null) ? 0 : ItemPrice.hashCode());
 		return result;
 	}
 
