@@ -76,9 +76,10 @@ public class OrderDAO implements Dao<Order>{
 	public Order create(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO orders2(customer_id, itemsID) VALUES (?, ?)");) {
+						.prepareStatement("INSERT INTO orders2(customer_id, itemsID, itemsQuantity) VALUES (?, ?, ?)");) {
 			statement.setLong(1, order.getCustomer_id());
 			statement.setLong(2, order.getItems_id());
+			statement.setLong(3, order.getQuantity());
 			statement.executeUpdate();
 			return readLatest();
 		} catch (Exception e) {
@@ -93,10 +94,11 @@ public class OrderDAO implements Dao<Order>{
 	public Order update(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("UPDATE orders2 SET itemsID = ? WHERE customer_id = ? AND order_id = ?");) {
+						.prepareStatement("UPDATE orders2 SET itemsID = ? AND itemsQuantity = ? WHERE customer_id = ? AND order_id = ?");) {
 			statement.setLong(1, order.getItems_id());
-			statement.setLong(2, order.getCustomer_id());
-			statement.setLong(3, order.getOrder_id());
+			statement.setLong(2, order.getQuantity());
+			statement.setLong(3, order.getCustomer_id());
+			statement.setLong(4, order.getOrder_id());
 			statement.executeUpdate();
 			return read(order.getOrder_id());
 		} catch (Exception e) {
@@ -128,8 +130,9 @@ public class OrderDAO implements Dao<Order>{
 		String fname = resultSet.getString("first_name");
 		String lname = resultSet.getString("surname");
 		String iname = resultSet.getString("Item_Name");
-		return new Order(orderID, id,fname, lname, id2,iname);
-	
+		long quantity = resultSet.getLong("itemsQuantity");
+		long userTotalPriceForOnePrice = resultSet.getLong("Item_Price");
+		return new Order(orderID, id, fname, lname, id2, iname,quantity, userTotalPriceForOnePrice);
 	}
 
 }

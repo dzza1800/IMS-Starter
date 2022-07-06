@@ -42,8 +42,10 @@ public class OrderController implements CrudController<Order> {
 		long id1 = utils.getLong();
 		LOGGER.info("Enter the item's id");
 		long id2 = utils.getLong();
-		Order order = orderDAO.create(new Order(id1, id2));
-		LOGGER.info("order created for user id " + id1 + " with item id " + id2);
+		LOGGER.info("Enter the item's quantity");
+		long id3 = utils.getLong();
+		Order order = orderDAO.create(new Order(id1, id2, id3));
+		LOGGER.info("order created for user id " + id1 + " with item id " + id2 + " With item quantity of: " + id3);
 		return order;
 	}
 
@@ -57,7 +59,9 @@ public class OrderController implements CrudController<Order> {
 		long id2 = utils.getLong();
 		LOGGER.info("enter id of the item (must be existing within the items table)");
 		long id3 = utils.getLong();
-		Order order = orderDAO.update(new Order(id1, id2, id3));
+		LOGGER.info("enter item quantity");
+		long id4 = utils.getLong();
+		Order order = orderDAO.update(new Order(id1, id2, id3, id4));
 		LOGGER.info("Item " + id3 + " is updated onto order id " + id1);
 		return order;
 	}

@@ -8,29 +8,35 @@ public class Order {
 	private String first_name;
 	private String last_name;
 	private String item_name;
+	private long Quantity;
+	private long totalPrice;
 	
 
 
-	public Order(long customer_id, long items_id) {
+	public Order(long customer_id, long items_id, long Quantity) {
 		setCustomer_id(customer_id);
 		setItems_id(items_id);
-		
+		setQuantity(Quantity);
 	}
 	
 
-	public Order(long order_id, long customer_id, long items_id) {
+	public Order(long order_id, long customer_id, long items_id, long Quantity ) {
 		setOrder_id(order_id);
 		setCustomer_id(customer_id);
 		setItems_id(items_id);
+		setQuantity(Quantity);
+		
 		
 	}
-	public Order(long order_id, long customer_id, String first_name, String last_name, long items_id, String item_name) {
+	public Order(long order_id, long customer_id, String first_name, String last_name, long items_id, String item_name, long Quantity, long totalPrice) {
 		setFirst_name(first_name);
 		setLast_name(last_name);
 		setItem_name(item_name);
 		setOrder_id(order_id);
 		setCustomer_id(customer_id);
 		setItems_id(items_id);
+		setQuantity(Quantity);
+		setTotalPrice(totalPrice);
 
 	}
 
@@ -76,6 +82,27 @@ public class Order {
 		this.items_id = items_id;
 	}
 	
+	
+	public long getQuantity() {
+		return Quantity;
+	}
+
+
+	public void setQuantity(long quantity) {
+		Quantity = quantity;
+	}
+
+
+	public long getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public void setTotalPrice(long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,7 +132,8 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [order_id=" + order_id + ", customer_id=" + customer_id + ", items_id=" + items_id
-				+ ", first_name=" + first_name + ", last_name=" + last_name + ", item_name=" + item_name + "]\n";
+				+ ", first_name=" + first_name + ", last_name=" + last_name + ", item_name=" + item_name + ", Quantity="
+				+ Quantity + ", totalPrice=" + totalPrice + "]\n";
 	}
 
 
