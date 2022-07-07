@@ -18,7 +18,7 @@ public class LoginController {
 		public LoginController() {
 			dbutil = new DBUtils();
 			utils = new Utils();
-			logindao = new LoginDAO();
+			logindao = new LoginDAO(); 
 		}
 
 		public void loggingIN() {

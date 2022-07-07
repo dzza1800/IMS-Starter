@@ -29,7 +29,7 @@ public class OrderDAO implements Dao<Order>{
 	public List<Order> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders22");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM FinalOrders");) {
 			List<Order> orders = new ArrayList<>();
 			while (resultSet.next()) {
 				orders.add(modelFromResultSet(resultSet));
@@ -45,11 +45,11 @@ public class OrderDAO implements Dao<Order>{
 	@Override
 	public Order read(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("SELECT * FROM orders22 WHERE order_id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM FinalOrders WHERE order_id = ?");) {
 			statement.setLong(1, id);
 			try (ResultSet resultSet = statement.executeQuery();) {
 				resultSet.next();
-				return modelFromResultSet(resultSet);
+				return modelFromResultSet(resultSet); 
 			}
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -57,11 +57,12 @@ public class OrderDAO implements Dao<Order>{
 		}
 		return null;
 	}
+
 	
 	public Order readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders22 ORDER BY order_id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM FinalOrders ORDER BY order_id DESC LIMIT 1");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -76,7 +77,7 @@ public class OrderDAO implements Dao<Order>{
 	public Order create(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO orders2(customer_id, itemsID, itemsQuantity) VALUES (?, ?, ?)");) {
+						.prepareStatement("INSERT INTO Orders(customer_id, itemsID, itemsQuantity) VALUES (?, ?, ?)");) {
 			statement.setLong(1, order.getCustomer_id());
 			statement.setLong(2, order.getItems_id());
 			statement.setLong(3, order.getQuantity());
@@ -94,7 +95,7 @@ public class OrderDAO implements Dao<Order>{
 	public Order update(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("UPDATE orders2 SET itemsID = ? AND itemsQuantity = ? WHERE customer_id = ? AND order_id = ?");) {
+						.prepareStatement("UPDATE Orders SET itemsID = ?, itemsQuantity = ? WHERE customer_id = ? AND order_id = ?");) {
 			statement.setLong(1, order.getItems_id());
 			statement.setLong(2, order.getQuantity());
 			statement.setLong(3, order.getCustomer_id());
@@ -112,14 +113,14 @@ public class OrderDAO implements Dao<Order>{
 	@Override
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM Orders2 WHERE order_id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM Orders WHERE order_id = ?");) {
 			statement.setLong(1, id);
 			return statement.executeUpdate();
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return 0;
+		return 0; 
 	}
 
 	@Override
@@ -133,6 +134,18 @@ public class OrderDAO implements Dao<Order>{
 		long quantity = resultSet.getLong("itemsQuantity");
 		long userTotalPriceForOnePrice = resultSet.getLong("Item_Price");
 		return new Order(orderID, id, fname, lname, id2, iname,quantity, userTotalPriceForOnePrice);
+	}
+
+	public int deleteItem(long id) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("UPDATE Orders SET itemsID = 0, itemsQuantity = 0 WHERE order_id = ?");) {
+			statement.setLong(1, id);
+			return statement.executeUpdate();
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return 0; 
 	}
 
 }

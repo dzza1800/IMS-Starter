@@ -28,7 +28,7 @@ public class OrderController implements CrudController<Order> {
 	public List<Order> readAll() {
 		List<Order> order = orderDAO.readAll();
 		for (Order orders : order) {
-			LOGGER.info(orders);
+			LOGGER.info(orders); 
 		}
 		return order;
 	}
@@ -66,13 +66,24 @@ public class OrderController implements CrudController<Order> {
 		return order;
 	}
 
+
 	/**
 	 * Deletes an existing customer by the id of the customer
 	 * 
 	 * @return
 	 */
 	public int delete() {
-		LOGGER.info("Please enter the id of the item you would like to delete");
+		LOGGER.info("Press 1 to delete an item from an order, Press 2 to delete an order");
+		Long option = utils.getLong();
+		if(option == 1) {
+			LOGGER.info("Please enter the id of the order where the item is to be deleted");
+			Long id = utils.getLong();
+			LOGGER.info("item from order " + id + " is Deleted");
+			return orderDAO.deleteItem(id);
+		}
+		
+		else if(option == 2)
+		LOGGER.info("Please enter the id of the order you would like to delete");
 		Long id = utils.getLong();
 		LOGGER.info("order " + id + " Deleted");
 		return orderDAO.delete(id);
