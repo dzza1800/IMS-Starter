@@ -88,6 +88,20 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("order " + id + " Deleted");
 		return orderDAO.delete(id);
 	}
+	
+	public int deleteOrder() {
+		
 
-
+		LOGGER.info("Please enter the id of the order you would like to delete");
+		Long id = utils.getLong();
+		LOGGER.info("order " + id + " Deleted");
+		return orderDAO.delete(id);
+	}
+	public int deleteItem() {
+			LOGGER.info("Please enter the id of the order where the item is to be deleted");
+			Long id = utils.getLong();
+			LOGGER.info("item from order " + id + " is Deleted");
+			return orderDAO.deleteItem(id);
+	}
+	
 }

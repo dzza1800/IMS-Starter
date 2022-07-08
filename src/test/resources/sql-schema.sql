@@ -1,7 +1,7 @@
+DROP TABLE IF EXISTS `customers`;
 DROP TABLE IF EXISTS `items`;
 DROP TABLE IF EXISTS `Orders`;
-DROP TABLE IF EXISTS `customers`;
-DROP TABLE IF EXISTS `FinalOrders`;
+
 
 CREATE TABLE IF NOT EXISTS customers (
 	id INT(11) NOT NULL AUTO_INCREMENT,
@@ -27,4 +27,11 @@ CREATE TABLE IF NOT EXISTS Orders (
     PRIMARY KEY (order_id)
 );
 
-CREATE or replace VIEW FinalOrders as SELECT order_id, customer_id, itemsID, customers.first_name, customers.surname, items.Item_Name, itemsQuantity, itemsQuantity * Item_Price as Item_Price FROM Orders LEFT JOIN customers ON id = customer_id LEFT JOIN items on items_id = itemsID;
+CREATE TABLE IF NOT EXISTS Users (
+    User_id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    UserPassword VARCHAR(255) NOT NULL,
+    PRIMARY KEY (User_id)
+);
+
+CREATE or replace VIEW FinalOrders as SELECT order_id, customer_id, itemsID, customers.first_name, customers.surname, items.Item_Name, itemsQuantity, itemsQuantity * Item_Price as Total_Item_Price FROM Orders LEFT JOIN customers ON id = customer_id LEFT JOIN items on items_id = itemsID;

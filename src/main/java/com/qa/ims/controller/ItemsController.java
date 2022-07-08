@@ -54,7 +54,7 @@ public class ItemsController implements CrudController<Item>{
 	 */
 	public Item update() {
 		LOGGER.info("Please enter the id of the item you would like to update");
-		Long id = utils.getLong();
+		long id = utils.getLong();
 		LOGGER.info("Please Name the ITEM");
 		String ItemName = utils.getString();
 		LOGGER.info("Please Enter the price of the ITEM");
