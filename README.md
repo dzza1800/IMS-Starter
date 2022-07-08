@@ -1,5 +1,5 @@
 Coverage: 71.4%
-# Project Title
+# Inventory Management System - Daniyal Abbas
 
 This project was made with the sole purpose to manage an inventory system using Java and a database framework called Java Database Connectivity (JDBC). This program follows CRUD operations in creating, reading, updating and deleting onto and from a database. Using JDBC the project was able to follow CRUD operations and was able to successfully run and work as intended. Other technologies are also implemented and used, this being Maven which is a automation tool and is used for dependancy management, JUnit testing was implemented as a dependency with Maven to allow the implementation of unit testing, and finally, mockito is also added for the use of integration testing. The main goal of this project was to procure database data and is then printed out for the user via a Command line interface (CLI) in the programming IDE which in this case is Eclipse.
 
