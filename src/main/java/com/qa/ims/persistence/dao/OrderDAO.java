@@ -132,7 +132,7 @@ public class OrderDAO implements Dao<Order>{
 		String lname = resultSet.getString("surname");
 		String iname = resultSet.getString("Item_Name");
 		long quantity = resultSet.getLong("itemsQuantity");
-		long userTotalPriceForOnePrice = resultSet.getLong("Item_Price");
+		long userTotalPriceForOnePrice = resultSet.getLong("Total_Item_Price");
 		return new Order(orderID, id, fname, lname, id2, iname,quantity, userTotalPriceForOnePrice);
 	}
 

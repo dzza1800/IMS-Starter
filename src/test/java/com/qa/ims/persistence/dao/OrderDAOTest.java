@@ -13,12 +13,13 @@ import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.DBUtils;
 
 public class OrderDAOTest {
-	private final OrderDAO DAO = new OrderDAO();
+	private static OrderDAO DAO;
 
 	@Before
 	public void setup() {
+		DAO = new OrderDAO();
 		DBUtils.connect();
-		DBUtils.getInstance().init("src/test/resources/sql-orders-schema.sql", "src/test/resources/OrdersSQL.sql");
+		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 	} 
 
 	@Test
