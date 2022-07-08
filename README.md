@@ -2,6 +2,7 @@ Coverage: 70%
 # Project Title
 
 One Paragraph of project description goes here
+This project was made with the sole purpose to manage an inventory system using Java and a database framework called Java Database Connectivity (JDBC). This program follows CRUD operations in creating, reading, updating and deleting onto and from a database. Using JDBC the project was able to follow CRUD operations and was able to successfully run and work as intended. Other technologies are also implemented and used, this being Maven which is a automation tool and is used for dependancy management, JUnit testing was implemented as a dependency with Maven to allow the implementation of unit testing, and finally, mockito is also added for the use of integration testing. The main goal of this project was to procure database data and is then printed out for the user via a Command line interface (CLI) in the programming IDE which in this case is Eclipse.
 
 ## Getting Started
 
@@ -11,9 +12,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-``` Maven is required for the use of unit testing and integeration
-Give examples
-```
+Maven is required for the use of unit testing and integration testing.
+JUnit is used for unit testing, is a unit testing framework, used in a pom file as a dependancy on maven.<br />
+Mockito is used for integration testing, is a mocking framework for java for unit testing also. Used in a pom file as a dependancy on maven. <br />
+Eclipse for IDE or any other Java compatible IDE. Can be installed from their official sites Eclipse, intelliJ etc. <br />
+MySQL is installed for the use of a database, can be installed by mySQL official site. <br />
+
 
 ### Installing
 
@@ -21,17 +25,23 @@ A step by step series of examples that tell you how to get a development env run
 
 Say what the step will be
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+This project was installed by forking the original repository where this project is located.
+![Fork Image](Fork.PNG)
+<br />
+Once forked you must clone it onto your system, or git pull (User's choice) Using git bash with these two commands: <br />
+git clone "git url" into a directory of your choice.
+You can create a remote in a directory using git remote add "name" "url" and then use git pull "(remote name)" "(branch name)".
+![Clone Image](Clone.PNG)
+<br />
+Maven must be installed to be able to use dependencies this being mockito, JDBC and JUnit.
+<br />
+Using the IDE you prefer, import the project onto it by clicking on file > import > file system (on Eclipse), since it is a maven project, it automatically imports as a maven project.
+![Import Image](import.PNG)
+<br />
+Any dependencies that were used for the skeleton are also imported.
+<br />
+User can update dependencies with new versions if they choose to do so.
+<br />
 
 ## Running the tests
 
