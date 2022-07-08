@@ -1,57 +1,56 @@
 package com.qa.ims.persistence.dao;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.DBUtils;
 
-public class CustomerDAOTest {
-
-	private CustomerDAO DAO = new CustomerDAO();
+public class ItemDAOTest {
+	private final ItemsDAO DAO = new ItemsDAO();
 
 	@Before
 	public void setup() {
-		
 		DBUtils.connect();
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
-		
-	}
+	} 
 
 	@Test
 	public void testCreate() {
-		final Customer created = new Customer(5L, "chris", "perrins");
+		long price = 23;
+		final Item created = new Item(2L, "Test", price);
 		assertEquals(created, DAO.create(created));
 	}
 
 	@Test
 	public void testReadAll() {
-		List<Customer> expected = new ArrayList<>();
-		expected.add(new Customer(1L, "jordan", "harrison"));
+		List<Item> expected = new ArrayList<>();
+		long price = 23;
+		expected.add(new Item(1L, "Test", price));
 		assertEquals(expected, DAO.readAll());
 	}
-
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Customer(1L, "jordan", "harrison"), DAO.readLatest());
+		long price = 23;
+		assertEquals(new Item(1L, "Test", price), DAO.readLatest());
 	}
 
 	@Test
 	public void testRead() {
 		final long ID = 1L;
-		assertEquals(new Customer(ID, "jordan", "harrison"), DAO.read(ID));
+		long price = 23;
+		assertEquals(new Item(ID, "Test", price), DAO.read(ID));
 	}
 
 	@Test
 	public void testUpdate() {
-		final Customer updated = new Customer(1L, "chris", "perrins");
+		long price = 23;
+		final Item updated = new Item(1L, "Test", price);
 		assertEquals(updated, DAO.update(updated));
 
 	}
@@ -61,5 +60,4 @@ public class CustomerDAOTest {
 		assertEquals(1, DAO.delete(1));
 	}
 
-	
 }

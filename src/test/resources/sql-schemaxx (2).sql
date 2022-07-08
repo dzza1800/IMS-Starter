@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS items;
+
+CREATE TABLE IF NOT EXISTS items (
+    items_id INT(11) NOT NULL AUTO_INCREMENT,
+    Item_Name VARCHAR(40) DEFAULT NULL,
+    Item_Price  DECIMAL(8, 2) NOT NULL,
+    PRIMARY KEY (items_id)
+);
