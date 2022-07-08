@@ -34,7 +34,7 @@ public class ItemsControllerTest {
 	@Test
 	public void testCreate() {
 		final String ItemName = "Car";
-		final Item created = new Item(ItemName, 23L);
+		final Item created = new Item(ItemName, 23);
 
 		Mockito.when(utils.getString()).thenReturn(ItemName);
 		Mockito.when(utils.getLong()).thenReturn(23L);
@@ -50,7 +50,7 @@ public class ItemsControllerTest {
 	@Test
 	public void testReadAll() {
 		List<Item> items = new ArrayList<>();
-		items.add(new Item(1L, "Car", 23L));
+		items.add(new Item(1, "Car", 23));
 
 		Mockito.when(dao.readAll()).thenReturn(items);
 
@@ -61,11 +61,11 @@ public class ItemsControllerTest {
 
 	@Test
 	public void testUpdate() {
-		Item updated = new Item(1L,"Car",23L);
+		Item updated = new Item(1L ,"Car", 23L);
 
-		Mockito.when(utils.getLong()).thenReturn(1L);
+		Mockito.when(utils.getLong()).thenReturn(1L, 23L);
 		Mockito.when(utils.getString()).thenReturn("Car");
-		Mockito.when(utils.getLong()).thenReturn(23L);
+		
 		
 		Mockito.when(dao.update(updated)).thenReturn(updated);
 
@@ -78,7 +78,7 @@ public class ItemsControllerTest {
 
 	@Test
 	public void testDelete() {
-		final long ID = 1L;
+		final long ID = 1;
 
 		Mockito.when(utils.getLong()).thenReturn(ID);
 		Mockito.when(dao.delete(ID)).thenReturn(1);

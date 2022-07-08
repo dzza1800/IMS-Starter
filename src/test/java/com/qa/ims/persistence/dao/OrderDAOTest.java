@@ -24,8 +24,8 @@ public class OrderDAOTest {
 
 	@Test
 	public void testCreate() {
-		long quan = 2;
-		final Order created = new Order(1L, 1L,"j", "h", 1L, "Test", quan, 46);
+		
+		final Order created = new Order(1L, 1L, 1L, 1L);
 		assertEquals(created, DAO.create(created));
 	}
 
@@ -33,20 +33,20 @@ public class OrderDAOTest {
 	public void testReadAll() {
 		List<Order> expected = new ArrayList<>();
 		long quan = 2;
-		expected.add(new Order(1L, 1L,"j", "h", 1L, "Test", quan, 46));
+		expected.add(new Order(1L, 1L,"jordan", "harrison", 1L, "Test", quan, 46));
 		assertEquals(expected, DAO.readAll());
 	}
 	@Test
 	public void testReadLatest() {
 		long quan = 2;
-		assertEquals(new Order(1L, 1L,"j", "h", 1L, "Test", quan, 46), DAO.readLatest());
+		assertEquals(new Order(1L, 1L,"jordan", "harrison", 1L, "Test", quan, 46), DAO.readLatest());
 	}
 
 	@Test
 	public void testRead() {
 		final long ID = 1L;
 		long quan = 2;
-		assertEquals(new Order(1L, 1L,"j", "h", 1L, "Test", quan, 46), DAO.read(ID));
+		assertEquals(new Order(1L, 1L,"jordan", "harrison", 1L, "Test", quan, 46), DAO.read(ID));
 	}
 
 	@Test
