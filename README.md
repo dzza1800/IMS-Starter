@@ -61,7 +61,7 @@ assertTrue: checks if the expression is true.
 <br />
 assertFalse: checks if the expression is false.
 <br />
-![Customer Unit Test](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/CustomerTest1Unit.PNG?raw=true)
+![Customer Unit Test](/Tests/CustomerTest1Unit.PNG)
 <br />
 This test here is created for the sole purpose to test the create function for customer. These lines of code is to check if each parameter is correctly recognised and returns that result when ran. assertEquals is used to check if the object is equal 
 <br />
