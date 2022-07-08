@@ -61,16 +61,16 @@ assertTrue: checks if the expression is true.
 <br />
 assertFalse: checks if the expression is false.
 <br />
-![Customer Unit Test](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/CustomerTest1Unit.PNG)
+![Customer Unit Test](CustomerTest1Unit.PNG)
 <br />
 This test here is created for the sole purpose to test the create function for customer. These lines of code is to check if each parameter is correctly recognised and returns that result when ran. assertEquals is used to check if the object is equal 
 <br />
 <br />
-![Results of final customer unit testing](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/finalCustomerTestsUnit.PNG)
+![Results of final customer unit testing](finalCustomerTestsUnit.PNG)
 <br />
 This image shows 6 tests being ran and all resulting in successful for the customersDAOTest which informs the developer that the methods in the customerDAO class are working as intended.
 <br />
-![Items Unit test](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/ItemsUnitTest1.PNG)
+![Items Unit test](ItemsUnitTest1.PNG)
 <br />
 The setup method is known as a before method and is ran before the tests are ran, this is to ensure the resources for the test are ran and stored beforehand for a successful test, as these tests require a schema, the setup method allows a testing schema to be used which is defined in a sql file that this application reads in text.
 <br />
@@ -78,7 +78,7 @@ The first test is similar to the one above and is to check if the object returns
 <br />
 The second test is to check if the readall method is working in itemsDAO. assertEquals checks if the if the list contains this result set and this specific resultset. As the setup contains an sql data file, this file contains a single query to add these parameters on setup, hence having an item stored on set up and then checking if the method to read all, is able to obtain this particular result. If this sql data file did not exist, the test would also include creating an item in the method before reading it as the read all is null before the setup and is only updated when the query is also set up before the test.
 <br />
-![Items Unit test Result](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/ItemUnitTestResult.PNG)
+![Items Unit test Result](ItemUnitTestResult.PNG)
 <br />
 This final image for unit testing shows that the itemDAOTest resulting in 100% successful for all 6 tests. Proving that the class is successful in its intended purpose.
 
@@ -91,7 +91,7 @@ Mockito.when: This function checks to see when something happens, it will return
 <br />
 Mockito.verify: checks invocations for a particular parameter/method thus if a method uses 3 long parameters when ran, it should be verified as 3 long invocations.
 <br />
-![Orders Integration Tests](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/IntegrationOrderController.PNG)
+![Orders Integration Tests](IntegrationOrderController.PNG)
 <br />
 These two intergration tests check the integration of creating an order, and the integration of reading an order.
 <br />
@@ -99,7 +99,7 @@ The first test which is creating an order calls an order constructor with 3 vari
 <br />
 assertEquals is used to check if the order successfully returns the same result as the constructor, if so the test is successful else it will return an assertion error with the reason which most of the time it will be null.
 <br />
-![Orders Integration Tests](https://github.com/dzza1800/IMS-Starter/blob/documents/Tests/OrderControllerTest1.PNG)
+![Orders Integration Tests](OrderControllerTest1.PNG)
 <br />
 This final image shows the results of the integration testing for the order controller test and resulted in a successful test overall with  5/5 tests.
 
